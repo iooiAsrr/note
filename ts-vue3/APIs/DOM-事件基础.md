@@ -114,15 +114,23 @@ let n = setInterval()
 
 ![image-20240410212410025](https://raw.githubusercontent.com/iooiAsrr/picture/main/Typora/202404102124062.png)
 
+### 节点增删改查克隆
+
+![image-20240413150925614](https://raw.githubusercontent.com/iooiAsrr/picture/main/Typora/202404131509725.png)
+
+![image-20240413151118153](https://raw.githubusercontent.com/iooiAsrr/picture/main/Typora/202404131511209.png)
+
+### 删除节点
+
+![image-20240413151811393](https://raw.githubusercontent.com/iooiAsrr/picture/main/Typora/202404131518440.png)
+
+### 移动端事件
+
+![image-20240413152028822](https://raw.githubusercontent.com/iooiAsrr/picture/main/Typora/202404131520861.png)
 
 
 
-
-
-
-
-
-
+### windows对象
 
 
 
