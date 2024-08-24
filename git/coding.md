@@ -1,6 +1,6 @@
-![PixPin_2023-12-04_11-00-13](E:\Home\note\git\assets\202403012047984.png)
+![PixPin_2023-12-04_11-00-13](.\assets\202403012047984.png)
 
-![image-20240501143827284](E:\Home\note\git\assets\202405011438510.png)
+![image-20240501143827284](.\assets\202405011438510.png)
 
 ```shell
 git status 查看仓库状态
@@ -21,7 +21,7 @@ git ls-files 查看暂存区内容
 
 # Git reset
 
-![image-20240501153018341](E:\Home\note\git\assets\202405011530537.png)
+![image-20240501153018341](.\assets\202405011530537.png)
 
 # Git diff
 
@@ -32,39 +32,39 @@ git diff HEAD~2 HEAD //和上两个版本的版本比较
 git diff HEAD~2 HEAD test.txt //只比较test.txt文件差异
 ```
 
-![image-20240501154033426](E:\Home\note\git\assets\202405011540639.png)
+![image-20240501154033426](.\assets\202405011540639.png)
 
 # Git rm
 
-![image-20240501155831601](E:\Home\note\git\assets\202405011558789.png)
+![image-20240501155831601](.\assets\202405011558789.png)
 
 # .gitignore
 
-![image-20240501161105273](E:\Home\note\git\assets\202405011611475.png)
+![image-20240501161105273](.\assets\202405011611475.png)
 
-![image-20240501161030166](E:\Home\note\git\assets\202405011610407.png)
+![image-20240501161030166](.\assets\202405011610407.png)
 
 ![image-20240501161045591](https://raw.githubusercontent.com/iooiAsrr/picture/main/Typora/202405011610651.png)
 
 # SSH配置
 
-![image-20240501162326628](E:\Home\note\git\assets\202405011623777.png)
+![image-20240501162326628](.\assets\202405011623777.png)
 
 # 远程仓库
 
-![image-20240501163104325](E:\Home\note\git\assets\202405011631502.png)
+![image-20240501163104325](.\assets\202405011631502.png)
 
 # IDE中的Git
 
-![image-20240501164521433](E:\Home\note\git\assets\202405011645555.png)
+![image-20240501164521433](.\assets\202405011645555.png)
 
 # 分支
 
-![image-20240501171546333](E:\Home\note\git\assets\202405011715541.png)
+![image-20240501171546333](.\assets\202405011715541.png)
 
 # 合并冲突
 
-![image-20240501184013988](E:\Home\note\git\assets\202405011840157.png)
+![image-20240501184013988](.\assets\202405011840157.png)
 
 
 
