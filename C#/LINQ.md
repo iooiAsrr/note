@@ -164,11 +164,152 @@
     ```
 
 ### 常见错误
-- ![image-20241027161747339](./assets/image-20241027161747339.png)
+- <img src="./assets/image-20241027161747339.png" alt="image-20241027161747339" style="zoom:50%;" />
 
-- ![image-20241027162134511](./assets/image-20241027162134511.png)
+- <img src="./assets/image-20241027162134511.png" alt="image-20241027162134511" style="zoom:50%;" />
 
-  
+### 反射和特性
+在 C# 中，**反射**（Reflection）和**特性**（Attributes）是两个重要的概念，常用于动态获取类型信息和为程序元素添加元数据。以下是它们的详细介绍和示例。
 
+### 1. 反射（Reflection）
+**反射**允许程序在运行时检查和操作类型信息，包括类、方法、属性等。可以通过反射获取类的类型信息，并访问其成员（例如方法和属性），即使在编译时不清楚类型。
 
+#### 反射的使用场景
+- **插件系统**：在不知道具体类型的情况下加载和使用外部程序集中的类型。
+- **序列化和反序列化**：通过反射可以将对象的属性和值进行动态序列化。
+- **动态调用**：运行时调用特定方法，或者获取/设置属性值。
+
+#### 示例代码
+```csharp
+using System;
+using System.Reflection;
+
+public class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public void SayHello()
+    {
+        Console.WriteLine($"Hello, my name is {Name} and I am {Age} years old.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // 1. 获取类型信息
+        Type personType = typeof(Person);
+
+        // 2. 创建对象
+        object personInstance = Activator.CreateInstance(personType);
+
+        // 3. 获取并设置属性值
+        PropertyInfo nameProperty = personType.GetProperty("Name");
+        PropertyInfo ageProperty = personType.GetProperty("Age");
+
+        nameProperty.SetValue(personInstance, "John");
+        ageProperty.SetValue(personInstance, 30);
+
+        // 4. 调用方法
+        MethodInfo sayHelloMethod = personType.GetMethod("SayHello");
+        sayHelloMethod.Invoke(personInstance, null); // 输出: Hello, my name is John and I am 30 years old.
+    }
+}
+```
+
+在上面的示例中，通过 `Activator.CreateInstance` 创建 `Person` 类的实例，使用反射获取属性 `Name` 和 `Age`，并动态设置它们的值，最后调用 `SayHello` 方法。
+
+### 2. 特性（Attributes）
+**特性**是用于向代码元素（类、方法、属性等）添加额外信息的注解。特性允许在编译时或者运行时获取元数据，用于控制代码行为、生成文档或进行验证等。
+
+#### 自定义特性示例
+首先，我们定义一个自定义特性 `DeveloperInfoAttribute`，用于存储开发人员的姓名和版本信息：
+
+```csharp
+using System;
+
+// 定义自定义特性
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+public class DeveloperInfoAttribute : Attribute
+{
+    public string Developer { get; }
+    public string Version { get; }
+
+    public DeveloperInfoAttribute(string developer, string version)
+    {
+        Developer = developer;
+        Version = version;
+    }
+}
+
+// 应用特性
+[DeveloperInfo("Alice", "1.0")]
+[DeveloperInfo("Bob", "1.1")]
+public class SampleClass
+{
+    [DeveloperInfo("Alice", "1.0")]
+    public void SampleMethod()
+    {
+        Console.WriteLine("This is a sample method.");
+    }
+}
+```
+
+#### 使用反射读取特性
+通过反射，我们可以读取特性的信息。
+
+```csharp
+class Program
+{
+    static void Main()
+    {
+        // 获取类型上的特性
+        Type type = typeof(SampleClass);
+        var attributes = type.GetCustomAttributes(typeof(DeveloperInfoAttribute), false);
+
+        foreach (DeveloperInfoAttribute attr in attributes)
+        {
+            Console.WriteLine($"Class Developer: {attr.Developer}, Version: {attr.Version}");
+        }
+
+        // 获取方法上的特性
+        var methodInfo = type.GetMethod("SampleMethod");
+        var methodAttributes = methodInfo.GetCustomAttributes(typeof(DeveloperInfoAttribute), false);
+
+        foreach (DeveloperInfoAttribute attr in methodAttributes)
+        {
+            Console.WriteLine($"Method Developer: {attr.Developer}, Version: {attr.Version}");
+        }
+    }
+}
+```
+
+#### 输出结果：
+```
+Class Developer: Alice, Version: 1.0
+Class Developer: Bob, Version: 1.1
+Method Developer: Alice, Version: 1.0
+```
+
+### 总结
+- **反射**：允许在运行时获取和操作类型信息，适合需要动态执行代码或插件系统。
+- **特性**：用于为代码元素添加额外信息，通常结合反射在运行时读取特性数据，从而控制程序行为或提供元数据。
+
+```c#
+//特性忽略属性输出
+[JsonIgnore]
+private bool true;
+//反射
+//反射获取属性标记的特性
+```
+
+### 自定义特性:Attribute
+
+```c#
+//继承Attribute
+//定义特性使用限制,限制到属性和类
+用特性修饰特性[AttributeUsage(AttributeTargets.Protertype | AttributeTargets.Class)]
+```
 
